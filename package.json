@@ -2,12 +2,18 @@
   "name": "styled-components-grid",
   "version": "2.2.2",
   "description": "Responsive grid components for `styled-components` 💅.",
-  "keywords": ["react", "styled-components", "grid", "responsive", "style"],
+  "keywords": [
+    "react",
+    "styled-components",
+    "grid",
+    "responsive",
+    "style"
+  ],
   "repository": "jameslnewell/styled-components-grid",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "jsnext:main": "dist/esm/index.js",
-  "files": ["dist/cjs", "dist/esm"],
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "react": ">= 15 < 17",
     "styled-components": ">= 1 < 5"
@@ -17,10 +23,15 @@
     "styled-components-breakpoint": "^2.0.2"
   },
   "devDependencies": {
-    "@tradie/react-component-scripts": "^1.0.0-alpha.a573b72a",
+    "@tradie/react-component-scripts": "^1.0.0-alpha.5fcb499c",
+    "@types/jest": "^24.0.13",
+    "@types/react": "^16.8.19",
+    "@types/react-test-renderer": "^16.8.1",
+    "@types/styled-components": "^4.1.16",
     "chroma-js": "^1.3.6",
     "gh-pages": "^1.1.0",
     "husky": "^0.14.3",
+    "jest": "^24.8.0",
     "jest-styled-components": "^5.0.0",
     "lint-staged": "^6.1.1",
     "prettier": "^1.10.2",
@@ -30,20 +41,25 @@
     "react-router-dom": "^4.2.2",
     "react-test-renderer": "^16.2.0",
     "styled-components": "^3.1.6",
-    "styled-components-spacing": "^3.0.0"
+    "styled-components-spacing": "^3.0.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.1"
   },
   "scripts": {
     "clean": "tradie clean",
     "lint": "tradie lint",
-    "build": "tradie build",
+    "build": "tsc",
     "dev": "tradie dev",
-    "test": "tradie test",
+    "test": "jest",
     "prepublishOnly": "yarn run clean && yarn run build && yarn run test",
     "postpublish": "gh-pages -d dist/example",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,json,md}": ["prettier --write", "git add"]
+    "*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "license": "MIT"
 }

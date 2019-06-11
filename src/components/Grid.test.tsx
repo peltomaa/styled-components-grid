@@ -1,10 +1,10 @@
-// @flow
 import 'jest-styled-components';
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import Grid from './Grid';
+import { HAlign } from '../types';
 
-const halignValues = {
+const halignValues: {[key in HAlign]: string} = {
   'left': 'flex-start',
   'right': 'flex-end',
   'center': 'center',
@@ -20,8 +20,7 @@ const valignValues = {
 };
 
 describe('Grid', () => {
-
-  Object.keys(halignValues).forEach((value) => {
+  Object.keys(halignValues).forEach((value: HAlign) => {
     it(`should render halign as "${value}"`, () => {
       const element = renderer.create(<Grid halign={value} />).toJSON();
       expect(element).toHaveStyleRule('justify-content', halignValues[value]);
@@ -37,7 +36,7 @@ describe('Grid', () => {
 
   Object.keys(valignValues).forEach((value) => {
     it(`should render valign as "${value}"`, () => {
-      const element = renderer.create(<Grid valign={value} />).toJSON();
+      const element = renderer.create(<Grid valign={value as any} />).toJSON();
       expect(element).toHaveStyleRule('align-items', valignValues[value]);
     });
   });

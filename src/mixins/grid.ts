@@ -1,8 +1,7 @@
-// @flow
-/* eslint-disable no-shadow */
 import { css } from 'styled-components';
+// @ts-ignore
 import { map } from 'styled-components-breakpoint';
-import { type BreakpointValues, type HAlign, type VAlign, type Reverse, type Wrap } from '../types';
+import { BreakpointValues, HAlign, VAlign, Reverse, Wrap } from '../types';
 
 function halign({ halign, reverse }: { halign: BreakpointValues<HAlign>, reverse: BreakpointValues<Reverse> }) {
   //if no value is specified, then don't output any css (it just makes it harder for the consumer to override)
@@ -10,7 +9,7 @@ function halign({ halign, reverse }: { halign: BreakpointValues<HAlign>, reverse
     return '';
   }
 
-  return map(halign, (value = 'left') => {
+  return map(halign, (value: HAlign = 'left') => {
     let rule = '';
     switch (value) {
       case 'left':
@@ -58,7 +57,7 @@ function valign({ valign }: { valign: BreakpointValues<VAlign> }) {
     return '';
   }
 
-  return map(valign, (value = 'stretch') => {
+  return map(valign, (value: VAlign = 'stretch') => {
     let rule = '';
     switch (value) {
       case 'top':
@@ -94,11 +93,11 @@ function reverse({ reverse }: { reverse: BreakpointValues<Reverse> }) {
     return '';
   }
 
-  return map(reverse, (value = false) => `flex-direction: ${(value && 'row-reverse') || 'row'};`);
+  return map(reverse, (value: Reverse = false) => `flex-direction: ${(value && 'row-reverse') || 'row'};`);
 }
 
 function wrap({ wrap, reverse }: { wrap: BreakpointValues<Wrap>, reverse: BreakpointValues<Reverse> }) {
-  return map(wrap, (value = true) => {
+  return map(wrap, (value: Wrap = true) => {
     if (value && reverse) {
       return 'flex-wrap: wrap-reverse;';
     } else if (value === false) {

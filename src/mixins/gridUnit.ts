@@ -1,11 +1,10 @@
-// @flow
-/* eslint-disable no-shadow */
 import { css } from 'styled-components';
+// @ts-ignore 
 import { map } from 'styled-components-breakpoint';
-import { type BreakpointValues, type Size, type Visible } from '../types';
+import { BreakpointValues, Size, Visible } from '../types';
 
 function size({ size }: { size: BreakpointValues<Size> }) {
-  return map(size, (value = 1) => {
+  return map(size, (value: string|number = 1) => {
     switch (value) {
       case 'min':
         return `
@@ -41,7 +40,7 @@ function visible({ visible }: { visible: BreakpointValues<Visible> }) {
     return '';
   }
 
-  return map(visible, value => {
+  return map(visible, (value: boolean) => {
     if (value === false) {
       return 'display: none;';
     } else {
